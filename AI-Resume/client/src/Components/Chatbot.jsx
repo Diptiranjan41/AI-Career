@@ -1108,11 +1108,13 @@ const AppCore = () => {
                         voiceConfig: { prebuiltVoiceConfig: { voiceName: "Puck" } }
                     }
                 },
-                model: "gemini-2.5-flash-preview-tts"
+                // FIXED: Use correct model name for TTS
+                model: "gemini-1.5-flash"
             };
 
             const response = await fetch(
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`,
+                // FIXED: Use correct model name in URL
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1261,7 +1263,12 @@ const AppCore = () => {
                  const contents = uploadedImageBase64
                     ? [{ role: "user", parts: [{ text: geminiPrompt }, { inlineData: { mimeType: "image/png", data: uploadedImageBase64 } }]}]
                     : [{ role: "user", parts: [{ text: geminiPrompt }] }];
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents }) });
+                // FIXED: Use correct model name for text generation
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ contents }) 
+                });
                 if (!response.ok) throw new Error(await response.text());
                 const result = await response.json();
                 responseText = cleanResponse(result.candidates?.[0]?.content?.parts?.[0]?.text || t('processingError'));

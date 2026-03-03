@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Remove .jsx and .js extensions
+// Components import (correct paths)
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import About from "./Components/About";
@@ -11,11 +11,15 @@ import Footer from "./Components/Footer";
 import CareerNavigator from "./Components/CareerNavigator";
 import Internships from "./Components/Internships";
 import Chatbot from "./Components/Chatbot";
-import SkillPath from "./Components/Skillpath";
+import SkillPath from "./Components/SkillPath";
 import ATSChecker from "./Components/ATSChecker";
-import AIMockInterview from "./Components/AIMockInterview";
 import CareerRoadmap from "./Components/CareerRoadmap";
 import Login from "./Components/Login";
+import Register from "./Components/Register";
+import Dashboard from "./Components/Dashboard";
+// import Profile from "./Components/Profile"; // ❌ REMOVED - Profile component hata diya
+import ForgotPassword from "./Components/ForgotPassword";
+
 
 function Home() {
   return (
@@ -40,9 +44,12 @@ function App() {
         <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/skill-path" element={<SkillPath />} />
         <Route path="/ats-checker" element={<ATSChecker />} />
-        <Route path="/ai-interview" element={<AIMockInterview />} />
         <Route path="/career-roadmap" element={<CareerRoadmap />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        
       </Routes>
     </Router>
   );
