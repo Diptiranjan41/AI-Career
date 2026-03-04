@@ -200,7 +200,8 @@ i18n
     },
   });
 
-const apiKey = typeof __api_key !== 'undefined' ? __api_key : 'AIzaSyCGSaYmZuKOeJGldUgl-4HM2CXbG74Qh64';
+// Get API key from environment variable (Vite format)
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || 'AIzaSyCGSaYmZuKOeJGldUgl-4HM2CXbG74Qh64';
 
 // Advanced Chat Components
 const FeedbackButtons = ({ onFeedback, messageId }) => {
@@ -1108,12 +1109,10 @@ const AppCore = () => {
                         voiceConfig: { prebuiltVoiceConfig: { voiceName: "Puck" } }
                     }
                 },
-                // FIXED: Use correct model name for TTS
                 model: "gemini-1.5-flash"
             };
 
             const response = await fetch(
-                // FIXED: Use correct model name in URL
                 `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
                 {
                     method: 'POST',
@@ -1263,7 +1262,6 @@ const AppCore = () => {
                  const contents = uploadedImageBase64
                     ? [{ role: "user", parts: [{ text: geminiPrompt }, { inlineData: { mimeType: "image/png", data: uploadedImageBase64 } }]}]
                     : [{ role: "user", parts: [{ text: geminiPrompt }] }];
-                // FIXED: Use correct model name for text generation
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, { 
                     method: 'POST', 
                     headers: { 'Content-Type': 'application/json' }, 

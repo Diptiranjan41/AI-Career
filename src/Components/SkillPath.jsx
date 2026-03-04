@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const SkillPathProgression = () => {
+const SkillPath = () => {  // Changed component name to match filename
   const [currentStep, setCurrentStep] = useState(1);
   const [jobRole, setJobRole] = useState('');
   const [userSkills, setUserSkills] = useState([]);
@@ -830,4 +830,4 @@ const SkillPathProgression = () => {
   );
 };
 
-export default SkillPathProgression;
+export default SkillPath; // Changed from SkillPathProgression to SkillPath
