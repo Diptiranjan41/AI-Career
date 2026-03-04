@@ -11,7 +11,7 @@ import Footer from "./Components/Footer";
 import CareerNavigator from "./Components/CareerNavigator";
 import Internships from "./Components/Internships";
 import Chatbot from "./Components/Chatbot";
-import SkillPath from "./Components/Skillpath";
+import Skillpath from "./Components/Skillpath";
 import ATSChecker from "./Components/ATSChecker";
 import CareerRoadmap from "./Components/CareerRoadmap";
 import Login from "./Components/Login";
